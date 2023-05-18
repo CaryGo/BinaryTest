@@ -1,0 +1,42 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+# use_frameworks! :linkage => :static
+# use_modular_headers!
+
+plugin 'cocoapods-jxedt'
+options = {
+    'binary_switch': true, # 插件开关，设置false则插件不生效
+    'all_binary': true, # 所有组件开启binary
+    'keep_source_project': true, # 保留源码pod工程，所在目录`Pods-Source`
+    'excluded_pods': [], # 排除binary的组件名称
+    'dev_pods_enabled': true,# 开发中的pod组件是否允许预编译成二进制
+    'xcframework': true,# 编译结果为xcframework
+    'framework_header_search_enabled': true, # 兼容头文件引用`#import "xxx.h"`
+    'configurations': ['Release'], # 支持的configurations ['Release', 'Debug']
+    'device_build_enabled': true, # 编译真机，默认true
+    'simulator_build_enabled': true, # 编译模拟器，默认false
+    'build_args':{
+      'default':["ONLY_ACTIVE_ARCH=NO", "BUILD_LIBRARY_FOR_DISTRIBUTION=YES"],# 基础编译配置
+      'device':["ARCHS='arm64'"],# 真机编译配置 "ARCHS='arm64 armv7 armv7s'"
+      'simulator':["ARCHS='arm64 x86_64'"] # 模拟器编译配置 "ARCHS='arm64 x86_64 i386'"
+    }
+}
+cocoapods_jxedt_config(options)
+
+target 'BinaryTestLibrary' do
+  # swift & oc
+  pod 'SwiftAndOC', :path => '../SwiftAndOC'
+    
+  #oc
+  pod 'AFNetworking'
+
+  #swift
+  pod 'Alamofire', :modular_headers => true
+
+  # framework
+  pod 'Bugly'
+
+  # library
+  pod 'WechatOpenSDK'
+end

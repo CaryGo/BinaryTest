@@ -1,0 +1,10 @@
+framework module SwiftAndOC {
+    umbrella header "SwiftAndOC-umbrella.h"
+
+    export *
+    module * { export * }
+}
+module SwiftAndOC.Swift {
+    header "SwiftAndOC-Swift.h"
+    requires objc
+}

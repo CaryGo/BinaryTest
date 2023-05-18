@@ -1,0 +1,53 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+use_frameworks! :linkage => :static # 插件是支持使用library的，插件会把编译后的.a生成framework。如果你的工程不支持module，可以删掉或者注释掉这一行。不影响使用
+# use_modular_headers!
+
+plugin 'cocoapods-jxedt'
+
+# 这里默认配置了大部分常用的配置参数，只需要简单修改就可以使用了
+options = {
+    'all_binary': true, # 全部组件使用二进制。默认为false
+    'binary_dir': '../_Prebuild', # 二进制文件的保存路径，'Pods/Pods.xcodeproj'文件的相对路径。默认为'../_Prebuild'
+    'binary_switch': true, # 插件开关，设置为false则关闭插件二进制功能。默认为true
+    'prebuild_job': true, # 开启编译任务，设置为false则不触发编译功能。默认为true
+    'keep_source_project': false, # 保留源码的pods工程，方便查看源码，文件目录为Podfile文件同级目录下'Pods-Source'。默认为false
+    'excluded_pods': [], # 排除binary的pods，是一个数组。默认是[]
+    'framework_header_search_enabled': true, # 开启binary的组件是否配置HEADER_SEARCH_PATH头文件搜索，兼容头文件引用的问题。默认为false
+    'configurations': ['Release'], # 支持的configuration配置，可以写字符串'Debug'或'Release'，也可以写多个'['Debug', 'Release']'。默认为'Release'
+    'xcframework': true, # 编译结果是否为xcframework。默认false
+    'clean_build': true, # 编译的时候是否clean build。默认true
+    'device_build_enabled': true, # 编译真机架构。默认true
+    'simulator_build_enabled': true, # 编译模拟器架构。默认false
+    'disable_resource_compilable_pods': false, # 禁止编译有特殊resource文件(xib、xcdatamodeld等)的pod。默认为false
+    'build_args': {
+        'default': ["ONLY_ACTIVE_ARCH=NO", "BUILD_LIBRARY_FOR_DISTRIBUTION=YES"],
+        'device': ["ARCHS='arm64'"],
+        'simulator': ["ARCHS='x86_64 arm64'"]
+    },
+    'git_cache': { # 如果不需要git缓存，直接删掉这个节点即可
+        'repo': 'git@github.com:CaryGo/BinaryTest-Cache.git', # 配置缓存仓库地址
+        'branch': 'develop', # git cache的branch，默认是master分支
+        'auto_fetch': true, # 预编译过程是否自动拉取远程的二进制。默认true
+        'auto_push': false # 预编译过程是否自动同步二进制结果到远程。默认false
+    }
+}
+cocoapods_jxedt_config(options)
+
+target 'BinaryTestFramework' do
+  # swift & oc
+  pod 'SwiftAndOC', :path => 'SwiftAndOC/SwiftAndOC.podspec'
+    
+  #oc
+  pod 'AFNetworking'
+
+  #swift
+  pod 'Alamofire', :modular_headers => true
+
+  # framework
+  pod 'Bugly'
+
+  # library
+  pod 'WechatOpenSDK'
+end

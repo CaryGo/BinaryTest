@@ -30,14 +30,14 @@ options = {
         'repo': 'git@github.com:CaryGo/BinaryTest-Cache.git', # 配置缓存仓库地址
         'branch': 'develop', # git cache的branch，默认是master分支
         'auto_fetch': true, # 预编译过程是否自动拉取远程的二进制。默认true
-        'auto_push': false # 预编译过程是否自动同步二进制结果到远程。默认false
+        'auto_push': true # 预编译过程是否自动同步二进制结果到远程。默认false
     }
 }
 cocoapods_jxedt_config(options)
 
 target 'BinaryTestFramework' do
   # swift & oc
-  pod 'SwiftAndOC', :path => 'SwiftAndOC/SwiftAndOC.podspec'
+  pod 'SwiftAndOC', :git => 'git@github.com:CaryGo/SwiftAndOC.git', :branch => 'main'
     
   #oc
   pod 'AFNetworking'

@@ -23,7 +23,7 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - Bugly
-  - SwiftAndOC (from `SwiftAndOC/SwiftAndOC.podspec`)
+  - "SwiftAndOC (from `git@github.com:CaryGo/SwiftAndOC.git`, branch `main`)"
   - WechatOpenSDK
 
 SPEC REPOS:
@@ -35,15 +35,21 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   SwiftAndOC:
-    :path: SwiftAndOC/SwiftAndOC.podspec
+    :branch: main
+    :git: "git@github.com:CaryGo/SwiftAndOC.git"
+
+CHECKOUT OPTIONS:
+  SwiftAndOC:
+    :commit: bc615d8bf3e7e09c921561495c13a89371ef291b
+    :git: "git@github.com:CaryGo/SwiftAndOC.git"
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   Bugly: b8715e6ec4004b7f7fbffab0643ba80545aee3da
-  SwiftAndOC: 713ca7c5387d77900ebb3a2c6df8a5089e5fdf97
+  SwiftAndOC: 8ec50e5110c110a9703b893a1ee83568e9e47a0a
   WechatOpenSDK: e79349b37d44c015210f39fd6d2379f0ec60efe2
 
-PODFILE CHECKSUM: 3a46e07c727acd03b21739d0085b0b9ddbc0b055
+PODFILE CHECKSUM: 05fc9cb3b198a4de23dcdc37f71bdad8d2438906
 
 COCOAPODS: 1.11.0

@@ -26,8 +26,8 @@ cocoapods_jxedt_config(options)
 
 target 'BinaryTestLibrary' do
   # swift & oc
-  pod 'SwiftAndOC', :path => 'SwiftAndOC/SwiftAndOC.podspec'
-    
+  pod 'SwiftAndOC', :git => 'git@github.com:CaryGo/SwiftAndOC.git', :branch => 'main'
+  
   #oc
   pod 'AFNetworking'
 

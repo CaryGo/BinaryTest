@@ -38,6 +38,7 @@ DerivedData/
 
 Pods/
 Pods-Source/
+BinaryTestFramework/_Prebuild
 
 #
 # Add this line if you want to avoid checking in source code from the Xcode workspace
@@ -49,6 +50,7 @@ Pods-Source/
 # Carthage/Checkouts
 
 Carthage/Build/
+
 
 # fastlane
 #
